@@ -30,6 +30,6 @@ cp -r ./* ~/.local/share/plasma/plasmoids/pearOSLaunchpad/
 ```
 
 ## Copyright
-* Original code is by [adhec](https://github.com/adhec), released under the GNU General Public License V2+
+* Original code is by [hachikoharuno](https://github.com/hachikoharuno/), released under the GNU General Public License V2+
 * Modified code, as well as the installer script, together forming the pearOS-Default-Launchpad package, is released under the GNU General Public License V3.
 * Install script by Alexandru Balan, designed for pearOS, part of the Pear-Project (c) 2019-2021
