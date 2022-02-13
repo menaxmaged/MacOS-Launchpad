@@ -22,6 +22,8 @@ import QtQuick.Layouts 1.1
 
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
+import QtGraphicalEffects 1.0
+import org.kde.plasma.private.showdesktop 0.1
 
 Item {
     id: root
@@ -78,7 +80,9 @@ Item {
         readonly property double aspectRatio: (vertical ? implicitHeight / implicitWidth
             : implicitWidth / implicitHeight)
 
-        source: useCustomButtonImage ? plasmoid.configuration.customButtonImage : plasmoid.configuration.icon
+        //source: useCustomButtonImage ? plasmoid.configuration.customButtonImage : plasmoid.configuration.icon
+        //source: plasmoid.configuration.iconsDarkThemeCheckBox ? Qt.resolvedUrl("assets/desktop_black.svg") : Qt.resolvedUrl("assets/desktop.svg");
+        source: useCustomButtonImage ? plasmoid.configuration.customButtonImage : Qt.resolvedUrl("assets/launchpad.svg")
 
         active: mouseArea.containsMouse
 
@@ -90,6 +94,8 @@ Item {
 
         onSourceChanged: updateSizeHints()
     }
+
+
 
     MouseArea
     {

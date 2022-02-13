@@ -21,13 +21,10 @@ import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.0
-
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
-
 import org.kde.kquickcontrolsaddons 2.0 as KQuickAddons
 import org.kde.draganddrop 2.0 as DragDrop
-
 import org.kde.plasma.private.kicker 0.1 as Kicker
 
 Item {
@@ -47,6 +44,12 @@ Item {
     property alias cfg_numberRows:    numberRows.value
     property alias cfg_spaceWidth:    spaceWidth.value
     property alias cfg_spaceHeight:   spaceHeight.value
+    property alias cfg_dimming:       dimming.value
+    property alias cfg_searchopacity: searchopacity.value
+    property alias  cfg_backgroundImageCheckBox: backgroundImageCheckBox.checked
+    property string cfg_backgroundImage: backgroundImage.text
+    property alias cfg_animateScroll: animateScroll.checked
+    property alias cfg_animateScrollSpeed: animateScrollSpeed.value
 
     ColumnLayout {
         anchors.left: parent.left
@@ -156,6 +159,7 @@ Item {
             }
         }
 
+
         RowLayout{
             Layout.fillWidth: true
             Label {
@@ -243,5 +247,127 @@ Item {
                 }
             }
         }
+        RowLayout{
+
+                        Row{
+                    spacing: units.smallSpacing
+                   CheckBox {
+                        id: backgroundImageCheckBox
+                        checked: !backgroundColorCheckBox.checked
+                        text: i18n("Image background:")
+                        onCheckedChanged: {
+                            backgroundColorCheckBox.checked = !backgroundImageCheckBox.checked
+                        }
+                    }
+
+                    TextField {
+                        id: backgroundImage
+                        placeholderText: "Select image"
+                        text: cfg_backgroundImage
+                        readOnly : true
+                    }
+
+                    Button {
+                        id: imageButton
+                        implicitWidth: height
+                        PlasmaCore.IconItem {
+                            anchors.fill: parent
+                            source: "document-open-folder"
+                            PlasmaCore.ToolTipArea {
+                                anchors.fill: parent
+                                subText: "Select image"
+                            }
+                        }
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {fileDialog.open() }
+                        }
+                    }
+                    FileDialog {
+                        id: fileDialog
+                        selectMultiple : false
+                        title: "Pick a image file"
+                        nameFilters: [ "Image files (*.jpg *.png *.jpeg)", "All files (*)" ]
+                        onAccepted: {
+                            backgroundImage.text= fileDialog.fileUrls[0]
+                            cfg_backgroundImage = backgroundImage.text
+                        }
+                    }
+                }
+        }
+                GroupBox {
+            Layout.fillWidth: true
+
+            title: i18n("Effects")
+
+            flat: true
+
+            ColumnLayout {
+                CheckBox {
+                    id: animateScroll
+
+                    text: i18n("Animate page switching")
+                }
+
+                RowLayout {
+                    visible: animateScroll.checked
+                    Label {
+                        text: i18n("Slow")
+                    }
+
+                    Slider {
+                        id: animateScrollSpeed
+
+                        maximumValue: 550
+
+                        minimumValue: 150
+
+                        stepSize: 100
+
+                        tickmarksEnabled: true
+
+                        wheelEnabled: false
+                    }
+
+                    Label {
+                        text: i18n("Fast")
+                    }
+                }
+            }
+        }
+
+                    RowLayout{
+        Layout.fillWidth: true
+        Label {
+            text: i18n("Dimming:")
+        }
+        Slider{
+            id: dimming
+            minimumValue: 0
+            maximumValue: 100
+            stepSize: 10
+            implicitWidth: 100
+        }
+        Label {
+            text: i18n(dimming.value + "%");
+        }
     }
+
+                RowLayout{
+        Layout.fillWidth: true
+        Label {
+            text: i18n("Search Opacity:")
+        }
+        Slider{
+            id: searchopacity
+            minimumValue: 0
+            maximumValue: 100
+            stepSize: 10
+            implicitWidth: 100
+        }
+        Label {
+            text: i18n(searchopacity.value + "%");
+        }
+    }
+  }
 }

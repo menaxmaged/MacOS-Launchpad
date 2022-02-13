@@ -1,20 +1,19 @@
 [Desktop Entry]
 Name=pearOS Launchpad
-Comment=Nice launchpad for pear
+Comment=Default pearOS Launchpad
 
 Type=Service
-Icon=/usr/share/icons/launchpad.svg
+Icon=start-here-kde
 X-KDE-ServiceTypes=Plasma/Applet
 
 X-Plasma-API=declarativeappletscript
 X-Plasma-MainScript=ui/main.qml
 X-Plasma-Provides=org.kde.plasma.launchermenu
 
-X-KDE-PluginInfo-Author=adhe
-X-KDE-PluginInfo-Email=alxb421@gmail.com
-X-KDE-PluginInfo-Name=pearOSLaunchpad
-X-KDE-PluginInfo-Version=1.0
+X-KDE-PluginInfo-Author=Hachikoha
+X-KDE-PluginInfo-Name=pearOS-Launchpad
+X-KDE-PluginInfo-Version=0.1
 X-KDE-PluginInfo-Category=Application Launchers
 X-KDE-PluginInfo-Depends=
-X-KDE-PluginInfo-License=GPL v3
+X-KDE-PluginInfo-License=GPL v2+
 X-KDE-PluginInfo-EnabledByDefault=true

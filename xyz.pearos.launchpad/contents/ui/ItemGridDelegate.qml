@@ -23,6 +23,7 @@ import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.kquickcontrolsaddons 2.0
+import QtGraphicalEffects 1.0
 
 import "../code/tools.js" as Tools
 
@@ -84,18 +85,29 @@ Item {
         anchors {
             top: icon.bottom
             topMargin: units.smallSpacing
-            left: box.left
+            left: parent.left
             leftMargin: highlightItemSvg.margins.left
-            right: box.right
+            right: parent.right
             rightMargin: highlightItemSvg.margins.right
         }
 
         horizontalAlignment: Text.AlignHCenter
 
+        maximumLineCount: 2
         elide: Text.ElideRight
-        wrapMode: Text.NoWrap
+        wrapMode: Text.Wrap
 
-        text: model.display
+        color: plasmoid.configuration.invertColors ? "black" : "#f1f1f1" // FIXME TODO: Respect theming?
+
+        text: ("name" in model ? model.name : model.display)
+        layer.enabled: true
+        layer.effect: DropShadow {
+            verticalOffset: 1
+            horizontalOffset: 1
+            color: plasmoid.configuration.invertColors ? "#00000000" : "#aa000000"
+            radius: 2
+            samples: 5
+        }
     }
 
     Keys.onPressed: {
