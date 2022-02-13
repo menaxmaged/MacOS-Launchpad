@@ -2,7 +2,10 @@
 Features macOS style of Launchpad, easy way to open and launch your favourite apps.
 
 ## Screenshots
-<i>comin' soon</i>
+![image](https://user-images.githubusercontent.com/72302254/153732982-1d604462-e381-45ae-b95b-f39985866e44.png)
+
+![image](https://user-images.githubusercontent.com/72302254/153732992-4a0ce188-99fb-4d6e-b608-79baa852c367.png)
+
 
 ## Features
 * macOS Style launchpad
@@ -18,15 +21,6 @@ Features macOS style of Launchpad, easy way to open and launch your favourite ap
 git clone https://github.com/Pear-Project/pearOS-Default-Launchpad
 cd pearOS-Default-Launchpad
 ./install.sh
-```
-
-* manual way:
-```sh
-#!/usr/bin
-git clone https://github.com/Pear-Project/pearOS-Default-Launchpad
-cd pearOS-Default-Launchpad
-mkdir -p ~/.local/share/plasma/plasmoids/pearOSLaunchpad
-cp -r ./* ~/.local/share/plasma/plasmoids/pearOSLaunchpad/
 ```
 
 ## Copyright
